@@ -1,0 +1,26 @@
+{
+  "name": "reddit-reader",
+  "description": "a SPA for reading reddit posts",
+  "main": "index.js",
+  "authors": [
+    "Jennica Goo"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jmg2107/reddit-reader",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-bootstrap": "^2.1.3",
+    "angular-route": "^1.5.8",
+    "angular-touch": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.7",
+    "ng-lodash": "^0.5.0"
+  }
+}
