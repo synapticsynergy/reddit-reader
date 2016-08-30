@@ -21,6 +21,7 @@
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
     "express": "^4.14.0",
+    "express-session": "^1.14.1",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.1",
