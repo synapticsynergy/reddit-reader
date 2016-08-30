@@ -1,4 +1,4 @@
-var REDDIT = require('./config.js').REDDIT;
+var REDDIT;
 var snoowrap = require('snoowrap');
 var redditOauth = require('reddit-oauth');
 var request = require('request');
@@ -14,6 +14,7 @@ if(process.env.PORT){
   }
 } else {
   host = "http://localhost:3000";
+  REDDIT = require('./config.js').REDDIT;
 }
 
 var redditURL = 'https://www.reddit.com/api/v1/authorize?client_id=' + REDDIT.client_id + '&response_type=code&state=random&redirect_uri=' + host + '/redir&duration=permanent&scope=account,read';
