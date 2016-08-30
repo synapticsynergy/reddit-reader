@@ -1,7 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang='en' ng-app="spa">
 <head>
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css"></link>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
 </head>
 <body>
-  <h1>hello world</h1>
+<!--   Navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="form">SpaRead</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+        <ul class="nav navbar-nav navbar-right">
+          <li if-not-user>
+            <a ui-sref="login">Login</a>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div ui-view></div>
+  <div></div>
+
+  <!-- library dependencies -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/ng-lodash/build/ng-lodash.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="lib/angular-touch/angular-touch.js"></script>
+
+  <!-- app files -->
+  <script src="app/app.js"></script>
+  <script src="app/auth/login.js"></script>
+  <script src="app/services/httpRequest.js"></script>
+
 </body>
 </html>

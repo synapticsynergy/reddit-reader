@@ -32,7 +32,6 @@ module.exports = {
   },
 
   redir: function(req, res, next){
-    console.log(req.query.code);
 
     reddit.oAuthTokens('random', req.query,
       function (success) {
