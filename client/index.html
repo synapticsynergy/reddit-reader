@@ -18,6 +18,9 @@
           <li if-not-user>
             <a ui-sref="login">Login</a>
           </li>
+          <li if-not-user>
+            <a ui-sref="front">Hot News</a>
+          </li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -37,6 +40,7 @@
   <!-- app files -->
   <script src="app/app.js"></script>
   <script src="app/auth/login.js"></script>
+  <script src="app/front/front.js"></script>
   <script src="app/services/httpRequest.js"></script>
 
 </body>

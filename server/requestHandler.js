@@ -28,7 +28,7 @@ module.exports = {
 
   login: function(req, res, next){
     reddit.oAuthUrl('random', ['account', 'read']);
-    res.redirect(redditURL);
+    res.status(200).send(redditURL);
   },
 
   redir: function(req, res, next){
