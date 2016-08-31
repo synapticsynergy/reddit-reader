@@ -19,9 +19,22 @@ angular.module('spa.httpRequest',[])
       });
     };
 
+    var multi = function(mul){
+      return $http({
+        method: 'POST',
+        url: '/api/multi',
+        data: JSON.stringify({
+          multi: mul})
+      }).then(function(resp){
+        console.log('res ', resp.data);
+        return resp.data;
+      });
+    };
+
     return {
       login: login,
-      getHot: getHot
+      getHot: getHot,
+      multi: multi
     };
 
   });

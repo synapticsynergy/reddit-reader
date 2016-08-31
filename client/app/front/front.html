@@ -1,12 +1,25 @@
 <div class='container'>
   <div class='row'>
     <div class='col-xs-12'>
-      <h3>Hot Articles</h3>
-      <ul>
+      <h3 ng-if = '!mult'>Hot Articles</h3>
+      <h3 ng-if = 'mult'>Your MultiReddits: </h3>
+      <ul ng-if = '!mult'>
         <li ng-repeat='article in articles' ng-click='link(article)'>
         {{article.title}}
         </li>
       </ul>
+      <div ng-if = 'mult'>
+      <button ng-repeat='reddit in multiReddit'
+      ng-click='listSubRed(reddit)'>{{reddit.name}}</button>
+      <br>
+      </div>
+      <div ng-if = '!listSub'>
+        <ul>
+          <li ng-repeat='article in articles' ng-click='link(article)'>
+          {{article.title}}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 

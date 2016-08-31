@@ -4,7 +4,7 @@ var redditOauth = require('reddit-oauth');
 var request = require('request');
 var _ = require('lodash');
 
-var host, r;
+var host, r, username;
 if(process.env.PORT){
   host = "https://spa-read.herokuapp.com";
   REDDIT = {
@@ -48,38 +48,76 @@ module.exports = {
 
           r.get_me()
           .then(user => {
-            req.session.username = user.name;
+            console.log('user ', user.name);
+            username = user.name;
           });
-
+          res.redirect('/');
     });
 
-    res.redirect('/');
   },
 
   front: function(req, res, next){
-
-    r.get_user(req.session.username)
+    console.log('username ', username)
+    r.get_user(username)
     .get_multireddits()
     .then(resp => {
+      console.log(resp);
       if(resp.length !== 0){
-        res.status(200).send(resp);
+        var mult = [];
+        resp.forEach(function(multi){
+          var obj = {};
+          obj.name = multi.name;
+          obj.sub = [];
+
+          multi.subreddits.forEach(function(sub){
+            var url = sub.url.substring(3, sub.url.length-1);
+            console.log('url', url);
+            obj.sub.push(url);
+          });
+          mult.push(obj);
+        });
+        var packet = {type: 'multi', body: mult}
+        res.status(200).send(packet);
       } else  {
         // Printing a list of the titles on the front page
         r.get_hot()
         .map(post => {
-          console.log('posts', post);
+          // console.log('posts', post);
           var obj = {title: post.title, url: post.url, thumbnail: post.thumbnail};
           return obj;
           })
         .then(resp => {
+          resp.type = 'hot';
           res.status(200).send(resp);
         });
       }
 
     });
 
+  },
 
+  multi: function(req, res, next){
+    console.log('req ', req.body.multi);
+    var packet = {};
+
+    req.body.multi.forEach(function(sub, ind, arr){
+      r.get_subreddit(sub)
+      .get_hot({limit: 5})
+      .map(post => {
+         var obj = {title: post.title, url: post.url, thumbnail: post.thumbnail};
+          return obj;
+      })
+      .then(resp => {
+        packet[sub] = resp;
+        console.log('subred ', resp);
+        if(Object.keys(packet).length === arr.length){
+          res.status(200).send(packet);
+        }
+      })
+
+    });
 
   }
+
 
 };
