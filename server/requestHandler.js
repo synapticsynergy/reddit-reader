@@ -51,7 +51,7 @@ module.exports = {
             console.log('user ', user.name);
             username = user.name;
           });
-          res.redirect('/');
+          res.redirect('/#/home');
     });
 
   },
