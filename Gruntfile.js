@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     // create a task called clean, which
     // deletes all files in the listed folders
     clean: {
-      dist: 'dist/*'
+      dist: 'client/dist/*'
     },
 
     // what files should be linted
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         files: {
-          'dist/built.min.js': 'dist/built.js'
+          'client/dist/built.min.js': 'client/dist/built.js'
         }
       }
     },
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           // concat all the client files
-          'dist/built.js': 'client/app/**/*.js'
+          'client/dist/built.js': 'client/app/**/*.js'
         }
       }
     },
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
   });
 
   // Perform a build
-  grunt.registerTask('build', [ 'jshint', 'clean', 'concat', 'uglify']);
+  grunt.registerTask('build', [ 'clean', 'concat', 'uglify']);
 
 
   // Start build and run server

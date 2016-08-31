@@ -3,3 +3,4 @@ bower_components/
 server/config.js
 client/lib/
 dist/
+client/dist/

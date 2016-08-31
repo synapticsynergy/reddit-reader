@@ -4,7 +4,7 @@ angular.module('spa.login', [])
   $scope.login = function(){
     console.log('login button clicked');
     Request.login()
-    .then((res) => {
+    .then(function(res) {
       console.log('user logged in');
     });
   };

@@ -36,9 +36,6 @@ module.exports = {
 
     reddit.oAuthTokens('random', req.query,
       function (success) {
-          // Print the access and refresh tokens we just retrieved
-          console.log(reddit.access_token);
-          console.log(reddit.refresh_token);
           r = new snoowrap({
             user_agent: REDDIT.user_agent,
             client_id: REDDIT.client_id,
@@ -48,7 +45,6 @@ module.exports = {
 
           r.get_me()
           .then(user => {
-            console.log('user ', user.name);
             username = user.name;
           });
           res.redirect('/#/home');
@@ -82,7 +78,6 @@ module.exports = {
         // Printing a list of the titles on the front page
         r.get_hot()
         .map(post => {
-          // console.log('posts', post);
           var obj = {title: post.title, url: post.url, thumbnail: post.thumbnail};
           return obj;
           })
@@ -97,7 +92,7 @@ module.exports = {
   },
 
   multi: function(req, res, next){
-    console.log('req ', req.body.multi);
+
     var packet = {};
 
     req.body.multi.forEach(function(sub, ind, arr){
@@ -109,7 +104,6 @@ module.exports = {
       })
       .then(resp => {
         packet[sub] = resp;
-        console.log('subred ', resp);
         if(Object.keys(packet).length === arr.length){
           res.status(200).send(packet);
         }

@@ -15,7 +15,7 @@ angular.module('spa.front', [])
       } else {
         $scope.articles = resp;
       }
-    })
+    });
   };
 
   $scope.listSubRed = function(mul){
@@ -26,10 +26,10 @@ angular.module('spa.front', [])
       console.log('resp, ', resp);
       listSub = true;
       for(var sub in resp){
-        resp[sub].forEach(function(article){
+        resp[sub].forEach( function(article) {
           $scope.articles.push(article);
         });
-      };
+      }
 
     });
   };
