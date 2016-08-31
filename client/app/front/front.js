@@ -10,7 +10,6 @@ angular.module('spa.front', [])
     .then(function(resp){
       if(resp.type === 'multi'){
         $scope.mult = true;
-        console.log('body ', resp.body);
         $scope.multiReddit = resp.body;
       } else {
         $scope.articles = resp;
@@ -19,11 +18,9 @@ angular.module('spa.front', [])
   };
 
   $scope.listSubRed = function(mul){
-    console.log(mul.sub);
     $scope.articles = [];
     Request.multi(mul.sub)
     .then(function(resp){
-      console.log('resp, ', resp);
       listSub = true;
       for(var sub in resp){
         resp[sub].forEach( function(article) {
@@ -35,7 +32,6 @@ angular.module('spa.front', [])
   };
 
   $scope.link = function(article){
-    console.log('url is ', article.url);
     $window.location.href =  article.url;
   };
 

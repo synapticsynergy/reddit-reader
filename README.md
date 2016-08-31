@@ -9,6 +9,8 @@ Install: npm install
 Create your own config.js file in server/config.js.
 Please follow the guidelines in server/requestHandler.js
 All credentials can be requested from the Reddit API
+Launch locally with 'node index.js'
+Then navigate to 'localhost:3000' to view site
 
 To view the deployed app, please go to:
 https://spa-read.herokuapp.com

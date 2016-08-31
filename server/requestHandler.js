@@ -53,11 +53,9 @@ module.exports = {
   },
 
   front: function(req, res, next){
-    console.log('username ', username)
     r.get_user(username)
     .get_multireddits()
     .then(resp => {
-      console.log(resp);
       if(resp.length !== 0){
         var mult = [];
         resp.forEach(function(multi){
@@ -67,7 +65,6 @@ module.exports = {
 
           multi.subreddits.forEach(function(sub){
             var url = sub.url.substring(3, sub.url.length-1);
-            console.log('url', url);
             obj.sub.push(url);
           });
           mult.push(obj);
