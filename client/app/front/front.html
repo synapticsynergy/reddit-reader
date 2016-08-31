@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-xs-12'>
       <h3 ng-if = '!mult'>Hot Articles</h3>
-      <h3 ng-if = 'mult'>Your MultiReddits: </h3>
+      <h3 ng-if = 'mult'>Choose one of your MultiReddits</h3>
       <ul ng-if = '!mult'>
         <li ng-repeat='article in articles' ng-click='link(article)'>
         {{article.title}}
